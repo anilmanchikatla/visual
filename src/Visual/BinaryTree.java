@@ -69,6 +69,7 @@ public class BinaryTree {
     }
     private void add(Node present,int n)
     {
+        
        if(present.val>n)
        {
            if(present.left==null)
