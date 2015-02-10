@@ -157,6 +157,11 @@ class MyPanel extends JPanel {
                prev=getPoint(bt.getIndex(all.get(i))/2);
                g.drawLine(prev.x+15, prev.y+15, x.x+15, x.y+15);
                i++;
+               try {
+                     Thread.sleep(10);                 //1000 milliseconds is one second.
+                } catch(InterruptedException ex) {
+                     Thread.currentThread().interrupt();
+                }
         }
     //    g.drawRect(squareX,squareY,squareW,squareH);
     }  
