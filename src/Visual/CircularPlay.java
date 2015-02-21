@@ -72,6 +72,7 @@ public class CircularPlay extends Application {
         Point p = getPoint(n);
         Point p1 = getPointByIndex(btree.getIndex(n) / 2);
         sline(p.x + r / 2, p.y + r / 2, p1.x + r / 2, p1.y + r / 2);
+         gc.setStroke(Color.BLACK);
         gc.strokeOval(p.x, p.y, r, r);
         gc.strokeText(n + "", p.x + 0.2 * r, p.y + 0.6 * r);
     }
@@ -79,6 +80,7 @@ public class CircularPlay extends Application {
     private void sline(double x1, double y1, double x2, double y2) {
         Line l = new Line(x1, y1, x2, y2);
         l = shrink(l);
+        gc.setStroke(Color.RED);
         gc.strokeLine(l.getStartX(), l.getStartY(), l.getEndX(), l.getEndY());
     }
 
