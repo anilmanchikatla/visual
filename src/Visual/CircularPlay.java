@@ -165,13 +165,7 @@ public class CircularPlay extends Application {
         primaryStage.show();
     }
 
-    private void sleep(int n) {
-        try {
-            Thread.sleep(n);                 //1000 milliseconds is one second.
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
+  
 
     private Point getPoint(int n) {
         int x = cw / 2, y = tmargin;
