@@ -70,20 +70,19 @@ public class CanvasBST extends Application {
             int num = Integer.parseInt(tf.getText());
             st.put(num, num);
             gc.clearRect(0, 0, cw, ch);
-            boolean has = false;
-            Point p1 = new Point(0, 0);
+            
             for (Integer x : st.keys()) {
                 Point p = getPoint(x);
-                if (has) {
-                    if(st.getColor(x))
-                        gc.setStroke(Color.RED);
-                    gc.strokeLine(p1.x+r/2, p1.y+r/2, p.x+r/2, p.y+r/2);
-                }
+                Point p1=getParent(x);
+                
+                if(st.getColor(x))
+                    gc.setStroke(Color.RED);
+                gc.strokeLine(p1.x+r/2, p1.y+r/2, p.x+r/2, p.y+r/2);
+                
                 gc.setStroke(Color.BLACK);
                 gc.strokeOval(p.x, p.y, r, r);
                 gc.strokeText(x + "", p.x + 0.2 * r, p.y + 0.6 * r);
-                p1 = p;
-                has = true;
+                
             }
         });
 
@@ -97,6 +96,22 @@ public class CanvasBST extends Application {
         int addY = legY;
         String s = st.getPath(n);
         for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'R') {
+                x += addX;
+            } else {
+                x -= addX;
+            }
+            y += addY;
+            addX = addX / 2;
+        }
+        return new Point(x, y);
+    }
+    private Point getParent(int n) {
+        int x = cw / 2, y = tmargin;
+        int addX = legX;
+        int addY = legY;
+        String s = st.getPath(n);
+        for (int i = 0; i < s.length()-1; i++) {
             if (s.charAt(i) == 'R') {
                 x += addX;
             } else {
